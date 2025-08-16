@@ -1,69 +1,72 @@
-# React + TypeScript + Vite
+# Image Text Composer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based canvas editor built with [Fabric.js](https://fabricjs.com/), enabling users to add and manipulate text, images, and objects with features like undo/redo, zooming, panning, and export options.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Text Editing**: Add and edit text boxes with custom fonts.
+- **Zoom & Pan**: Zoom in/out using the mouse wheel and pan with Alt + Drag.
+- **Undo/Redo**: Supports up to 20 steps of undo and redo actions.
+- **Canvas State**: Automatically saves and restores canvas state via `localStorage`.
+- **Background Images**: Drag and drop background images with auto-scaling.
+- **Keyboard Navigation**: Move objects with arrow keys (fine and coarse movement with Shift).
+- **Export**: Export canvas as a high-resolution PNG image.
+- **Responsive Design**: Canvas adjusts to the parent container size.
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Canvas Editor Screenshot](https://via.placeholder.com/800x400.png?text=Canvas+Editor+Screenshot)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Clone the repository:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/ashishkunthe/image-text-composer.git
+cd image-text-composer
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:5173] in your browser.
+
+## Usage
+
+- **Toolbar**: Undo, redo, reset canvas, export as PNG.
+- **Text Controls**: Change font, add/edit text.
+- **Canvas**: Zoom with mouse wheel, pan with Alt + Drag, move objects with arrow keys.
+- **Local Storage**: The canvas state is automatically saved and restored on reload.
+
+## File Structure
+
+```
+src/
+├── components/
+│   ├── CanvasEditor.tsx      # Main canvas component
+│   ├── Toolbar.tsx           # Toolbar buttons
+│   └── TextControls.tsx      # Text/font controls
+├── utils/
+│   └── googleFonts.ts        # Utility to load Google Fonts dynamically
+├── App.tsx
+└── index.tsx
+```
+
+## Dependencies
+
+- [React](https://reactjs.org/)
+- [Fabric.js](https://fabricjs.com/)
+- TypeScript
+
+## License
+
+This project is licensed under the MIT License.
